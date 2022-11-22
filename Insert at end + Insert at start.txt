@@ -1,0 +1,77 @@
+#include<iostream>
+using namespace std;
+struct Node{
+	int data;
+	Node *next;
+
+};
+
+
+class LinkedList {
+private:
+	Node* head;
+
+public:
+	LinkedList(){
+		head = NULL;
+	}
+
+	//Add new element at the end of the list
+	void insertAtEnd(int val) {
+		Node* newNode = new Node();
+		newNode->data = val;
+		newNode->next = NULL;
+		if (head == NULL) {
+			head = newNode;
+		}
+		else {
+			Node* temp = head;
+			while (temp->next != NULL)
+				temp = temp->next;
+			temp->next = newNode;
+		}
+	}
+
+	//Add new element at the start of the list
+	void insertAtStart(int val){
+		Node *newNode = new Node();
+		newNode->data = val;
+		newNode->next = head;
+		head = newNode;
+	}
+
+
+	//display the content of the list
+	void DisplayList() {
+		Node* temp = head;
+		if (temp != NULL) {
+			cout << "The list contains: ";
+			while (temp != NULL) {
+				cout << temp->data << " ";
+				temp = temp->next;
+			}
+			cout << endl;
+		}
+		else {
+			cout << "The list is empty.\n";
+		}
+	}
+};
+
+int main(){
+
+	LinkedList b;
+	b.insertAtEnd(10);
+	b.insertAtEnd(20);
+	b.insertAtEnd(30);
+	b.DisplayList();
+
+	b.insertAtStart(100);
+	b.insertAtStart(200);
+	b.insertAtStart(300);
+	b.DisplayList();
+
+	
+
+	return 0;
+}
